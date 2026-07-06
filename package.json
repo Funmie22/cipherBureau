@@ -1,0 +1,24 @@
+{
+  "name": "cipher-bureau",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "npm exec -- devvit playtest r/YOUR_PREFERRED_SUBREDDIT",
+    "dev:webview": "npm --prefix webview run dev",
+    "build:webview": "npm --prefix webview run build",
+    "build": "npm run build:webview",
+    "package:devvit": "node scripts/prepare-devvit.cjs",
+    "pack:devvit": "node scripts/pack-devvit.cjs",
+    "ci:package": "npm run build:webview && npm run package:devvit && npm run pack:devvit"
+  },
+  "dependencies": {
+    "@devvit/public-api": "^0.13.5",
+    "@types/node": "^26.0.1",
+    "typescript": "^6.0.3"
+  },
+  "devDependencies": {
+    "@types/react": "^18.3.31"
+  },
+  "license": "BSD-3-Clause"
+}

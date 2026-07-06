@@ -1,0 +1,32 @@
+name: Build and Package Devvit
+
+on:
+  push:
+    branches: [ main, master ]
+  workflow_dispatch: {}
+
+jobs:
+  package:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+      - name: Install root deps
+        run: npm install
+      - name: Install webview deps
+        run: |
+          cd webview
+          npm install
+      - name: Build webview
+        run: npm run build:webview
+      - name: Prepare Devvit package
+        run: npm run package:devvit
+      - name: Zip package
+        run: npm run pack:devvit
+      - name: Upload artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: devvit-package
+          path: dist/*.zip

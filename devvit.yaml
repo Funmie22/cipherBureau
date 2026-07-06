@@ -1,0 +1,10 @@
+name: cipher-bureau
+version: 1.0.0
+description: Daily detective cases for Reddit communities.
+author: Cipher Bureau Team
+entrypoint: src/main.tsx
+webview: webview/dist/index.html
+tags:
+  - games
+  - daily
+  - detective
